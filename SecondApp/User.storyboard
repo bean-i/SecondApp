@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="92" id="sLG-fu-Mbc" customClass="UserTableViewCell" customModule="SecondApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserTableViewCell" rowHeight="92" id="sLG-fu-Mbc" customClass="UserTableViewCell" customModule="SecondApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sLG-fu-Mbc" id="VtS-bv-X4D">
@@ -47,17 +47,30 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AzF-tg-zfJ">
+                                            <rect key="frame" x="16" y="8" width="40" height="40"/>
+                                            <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="A0g-CP-PFm"/>
+                                                <constraint firstAttribute="width" constant="40" id="OPJ-b6-Wk3"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="bZp-Q0-VBb" firstAttribute="leading" secondItem="VtS-bv-X4D" secondAttribute="leading" constant="16" id="298-PT-RdP"/>
                                         <constraint firstAttribute="trailing" secondItem="e5d-aa-w7K" secondAttribute="trailing" constant="16" id="6dV-vv-C9c"/>
                                         <constraint firstItem="bZp-Q0-VBb" firstAttribute="top" secondItem="VtS-bv-X4D" secondAttribute="top" constant="8" id="G9t-if-UKR"/>
+                                        <constraint firstItem="AzF-tg-zfJ" firstAttribute="top" secondItem="bZp-Q0-VBb" secondAttribute="top" id="VnR-V9-aGL"/>
+                                        <constraint firstItem="AzF-tg-zfJ" firstAttribute="leading" secondItem="bZp-Q0-VBb" secondAttribute="leading" id="lL8-Ko-Sv8"/>
                                         <constraint firstItem="e5d-aa-w7K" firstAttribute="leading" secondItem="bZp-Q0-VBb" secondAttribute="trailing" constant="16" id="tcj-Xp-z14"/>
                                         <constraint firstAttribute="bottom" secondItem="bZp-Q0-VBb" secondAttribute="bottom" constant="8" id="vfD-0J-tBY"/>
                                         <constraint firstItem="e5d-aa-w7K" firstAttribute="centerY" secondItem="VtS-bv-X4D" secondAttribute="centerY" id="xGV-ez-GiK"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="likeButton" destination="AzF-tg-zfJ" id="eLG-kw-xyP"/>
                                     <outlet property="messageLabel" destination="RvL-74-C7m" id="Bgn-fM-BGU"/>
                                     <outlet property="nameLabel" destination="Js2-B9-9OY" id="xRl-oL-QYQ"/>
                                     <outlet property="profileImageView" destination="bZp-Q0-VBb" id="C5h-En-i3P"/>
@@ -76,8 +89,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
