@@ -10,7 +10,7 @@ import UIKit
 class BasicTableViewController: UITableViewController {
 
     
-    var list = ["프로젝트", "메인 업무", "새싹 과제"] {
+    var list = ["aaaaaasdfasdfasdfsdfdsasdfasdfaaaaaasdfasdfasdfsdfdsasdfasdfaaaaaasdfasdfasdfsdfdsasdfasdf", "프로젝트", "메인 업무", "새싹 과제"] {
         didSet {
             tableView.reloadData()
         }
@@ -22,8 +22,7 @@ class BasicTableViewController: UITableViewController {
         
 //        var monster = Monster() // 인스턴스 초기화
         
-        
-        tableView.rowHeight = 80
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     
@@ -51,6 +50,7 @@ class BasicTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jackCell")!
         
         cell.textLabel?.text = list[indexPath.row]
+        cell.textLabel?.numberOfLines = 0
         
         cell.detailTextLabel?.setPrimaryLabel("test")
         

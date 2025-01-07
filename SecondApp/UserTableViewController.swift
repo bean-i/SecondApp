@@ -6,16 +6,31 @@
 //
 
 import UIKit
-import Kingfisher
 
 class UserTableViewController: UITableViewController {
     
-    let friends = FriendsInfo().list
-    
+    var friends = FriendsInfo().list
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Xib cell
+        let nib = UINib(nibName: "NoProfileTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "NoProfileTableViewCell")
+    }
+    
+    @objc func likeButtonTapped(_ sender: UIButton) {
+        print(#function, sender.tag)
+        print(friends[sender.tag])
+        
+        friends[sender.tag].like.toggle()
+        
+//        tableView.reloadData()
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)],
+                             with: .fade)
+        
+        print(friends[sender.tag])
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -23,45 +38,30 @@ class UserTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("\(indexPath.row)번 째")
         print(#function)
-//        print() // 다른 속성
+
+//        let cell = UserTableViewCell()
         
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
+        // UserTableViewCell 인스턴스
+//        let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier, for: indexPath) as! UserTableViewCell
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NoProfileTableViewCell", for: indexPath) as! NoProfileTableViewCell
+        
+        
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell") as! UserTableViewCell
         
-        let row = friends[indexPath.row]
-        let image = row.profile_image
-        
-        if let image {
-            let url = URL(string: image)
-            cell.profileImageView.kf.setImage(with: url)
-        } else {
-            cell.profileImageView.image = UIImage(systemName: "person")
-        }
-        
-        let name = row.like ? "star.fill" : "star"
-        cell.likeButton.setImage(UIImage(systemName: name), for: .normal)
-        
-//        if row.like {
-//            cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-//        } else {
-//            cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-//        }
-        
-        cell.nameLabel.text = row.name
-        cell.messageLabel.text = row.message
-        
-        cell.nameLabel.font = .boldSystemFont(ofSize: 15)
-        cell.messageLabel.font = .systemFont(ofSize: 13)
-        
+//        cell.configureData(row: friends[indexPath.row])
+//        
+//        cell.likeButton.tag = indexPath.row
+//        cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+//        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return UITableView.automaticDimension
     }
-
-    
 
 }
